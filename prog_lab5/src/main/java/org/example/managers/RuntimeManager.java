@@ -1,0 +1,66 @@
+package org.example.managers;
+
+import org.example.utils.InputReader;
+import org.example.utils.Printable;
+
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+
+public class RuntimeManager implements Runnable {
+    private final Printable consoleOutput;
+    private final InputReader consoleInput;
+    private final CommandManager commandManager;
+    private final FileManager fileManager;
+
+    /**
+     * Конструктор RuntimeManager
+     * @param consoleOutput поток вывода
+     * @param consoleInput поток ввода
+     */
+    public RuntimeManager(Printable consoleOutput, InputReader consoleInput, CommandManager commandManager, FileManager fileManager) {
+        this.consoleOutput = consoleOutput;
+        this.consoleInput = consoleInput;
+        this.commandManager = commandManager;
+        this.fileManager = fileManager;
+    }
+
+    @Override
+    public void run() {
+        consoleOutput.println(
+                "ghbdtn! Вы используете программу prog_lab5 версии 1.0 в режиме треминала!!! \n" +
+                        "Для справки по доступным командам воспользуйтесь командой \"help\"");
+        while (true) {
+            try {
+                consoleOutput.print("$ ");
+                String query = consoleInput.readLine().trim();
+                String[] queryParts = query.split(" ");
+                launchCommand(queryParts);
+            }
+            catch (NoSuchElementException e) {
+                consoleOutput.println("Конец ввода. До свидания! :)");
+                break;
+            }
+            catch (Exception e) {
+                consoleOutput.printError("Ошибка во время выполнения: " + e.getMessage());
+                break;
+            }
+
+        }
+    }
+
+    public void launchCommand(String[] queryParts) {
+        String qCommandName = queryParts[0];
+        if (qCommandName.isBlank()) return;
+        String[] qCommandArgs = Arrays.copyOfRange(queryParts, 1, queryParts.length);
+        if (!commandManager.getCommands().containsKey(qCommandName)) {
+            consoleOutput.printError(String.format("Команда \"%s\" не найдена. Воспользуйтесь командой \"help\" для просмотра доступных команд", qCommandName));
+            return;
+        }
+        try {
+            commandManager.getCommands().get(qCommandName).execute(qCommandArgs);
+        } catch (Exception e) {
+            consoleOutput.printError("Произошла ошибка во время выполнения команды \"" + qCommandName + "\": " + e.getMessage());
+        }
+
+    }
+}
