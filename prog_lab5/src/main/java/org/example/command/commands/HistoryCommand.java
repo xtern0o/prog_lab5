@@ -23,7 +23,7 @@ public class HistoryCommand extends Command {
             if (history.size() > 5) {
                 history = new ArrayList<>(history.subList(history.size() - 5, history.size()));
             }
-            if (history.size() == 0) {
+            if (history.isEmpty()) {
                 consoleOutput.println("Похоже, до этого вы не выполнили ни одной команды!!!");
                 commandManager.addToHistory(this);
                 return;

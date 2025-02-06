@@ -17,6 +17,7 @@ public class HelpCommand extends Command {
     @Override
     public void execute(String[] args) {
         if (args.length == 0) {
+            consoleOutput.println("Краткая справка по всем доступным командам.");
             commandManager.getCommands().forEach(((commandName, command) -> consoleOutput.println(command.toString())));
             commandManager.addToHistory(this);
             return;
