@@ -64,6 +64,5 @@ public class CommandManager {
     public void execute(String name, String[] args) {
         Command command = commands.get(name);
         command.execute(args);
-        history.add(command);
     }
 }

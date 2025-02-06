@@ -18,6 +18,7 @@ public class HelpCommand extends Command {
     public void execute(String[] args) {
         if (args.length == 0) {
             commandManager.getCommands().forEach(((commandName, command) -> consoleOutput.println(command.toString())));
+            commandManager.addToHistory(this);
             return;
         }
         consoleOutput.printError("Эта команда не принимает никаких аргументов.");

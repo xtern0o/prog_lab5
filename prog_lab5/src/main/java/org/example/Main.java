@@ -4,6 +4,7 @@ import org.example.command.Command;
 import org.example.command.ConsoleInput;
 import org.example.command.ConsoleOutput;
 import org.example.command.commands.HelpCommand;
+import org.example.command.commands.HistoryCommand;
 import org.example.managers.CollectionManager;
 import org.example.managers.CommandManager;
 import org.example.managers.FileManager;
@@ -32,6 +33,7 @@ public class Main {
         if (!fileManager.validate()) return;
 
         commandManager.addCommand(new HelpCommand(commandManager, consoleOutput));
+        commandManager.addCommand(new HistoryCommand(commandManager, consoleOutput));
 
 
         RuntimeManager runtimeManager = new RuntimeManager(consoleOutput, consoleInput, commandManager, fileManager);
