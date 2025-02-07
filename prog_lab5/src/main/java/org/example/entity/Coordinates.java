@@ -1,7 +1,11 @@
 package org.example.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.example.utils.Validatable;
 
+@Getter
+@Setter
 public class Coordinates implements Validatable {
     private float x;
     private Integer y; //Значение поля должно быть больше -471, Поле не может быть null
@@ -20,21 +24,5 @@ public class Coordinates implements Validatable {
     @Override
     public String toString() {
         return "(" + x + ", " + y + ")";
-    }
-
-    public float getX() {
-        return x;
-    }
-
-    public void setX(float x) {
-        this.x = x;
-    }
-
-    public Integer getY() {
-        return y;
-    }
-
-    public void setY(Integer y) {
-        this.y = y;
     }
 }

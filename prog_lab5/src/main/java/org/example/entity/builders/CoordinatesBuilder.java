@@ -1,0 +1,26 @@
+package org.example.entity.builders;
+
+import org.example.command.ConsoleInput;
+import org.example.entity.Coordinates;
+import org.example.utils.Printable;
+
+import java.util.function.Predicate;
+
+public class CoordinatesBuilder extends Builder<Coordinates> {
+    public CoordinatesBuilder(Printable consoleOutput, ConsoleInput consoleInput) {
+        super(consoleOutput, consoleInput);
+    }
+
+    @Override
+    public Coordinates build() {
+        Predicate<Float> validateX = (x) -> (true);
+        Predicate<Integer> validateY = (y) -> (y != null && y > -471);
+
+        consoleOutput.println("Создание нового объекта Coordinates");
+
+        Float x = askFloat("x", "дробное число типа Float", validateX, "Неверный формат ввода!!");
+        Integer y = askInteger("y", "целое число; значение не пусто; значение больше -471", validateY, "Неверный формат ввода: число должно удовлетворять требованиям");
+
+        return new Coordinates(x, y);
+    }
+}

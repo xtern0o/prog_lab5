@@ -2,8 +2,7 @@ package org.example.managers;
 
 import org.example.entity.Ticket;
 
-import java.util.Date;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class CollectionManager {
     /**
@@ -31,6 +30,36 @@ public class CollectionManager {
      */
     public void addNewElement(Ticket t) {
         collection.add(t);
+    }
+
+    /**
+     * Находит объект в коллекции по его id
+     * @param id айди.
+     * @return Объект из коллекции или null, если его не существует
+     */
+    public Ticket getElementById(Integer id) {
+        for (Ticket ticket : collection) {
+            if (Objects.equals(ticket.getId(), id)) return ticket;
+        }
+        return null;
+    }
+
+    /**
+     * Статический метод для генерации нового id
+     * @return минимальный несуществующий id
+     */
+    public static int generateFreeId() {
+        if (collection.isEmpty()) return 1;
+
+        HashSet<Integer> existIds = new HashSet<>();
+        for (Ticket ticket : collection) {
+            existIds.add(ticket.getId());
+        }
+
+        for (int i = 0; i < Collections.max(existIds); i++) {
+            if (!existIds.contains(i)) return i;
+        }
+        return Collections.max(existIds) + 1;
     }
 
 }
