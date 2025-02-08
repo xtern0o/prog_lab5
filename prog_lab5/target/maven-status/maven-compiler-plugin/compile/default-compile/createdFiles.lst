@@ -1,3 +1,4 @@
+org/example/command/commands/ShowCommand.class
 org/example/command/commands/HistoryCommand.class
 org/example/utils/exceptions/ValidationError.class
 org/example/command/commands/AddCommand.class

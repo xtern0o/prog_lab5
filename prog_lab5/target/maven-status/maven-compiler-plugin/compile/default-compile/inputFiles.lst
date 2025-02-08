@@ -6,6 +6,7 @@
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/command/commands/AddCommand.java
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/command/commands/HelpCommand.java
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/command/commands/HistoryCommand.java
+/home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/command/commands/ShowCommand.java
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/entity/Coordinates.java
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/entity/Country.java
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/entity/Person.java

@@ -10,6 +10,6 @@ public class ValidationError extends RuntimeException {
 
     @Override
     public String getMessage() {
-        return "Ошибка при валидации объекта " + Object.class.getName() + ".";
+        return "Ошибка при валидации объекта " + this.o.getClass().getName() + ".";
     }
 }

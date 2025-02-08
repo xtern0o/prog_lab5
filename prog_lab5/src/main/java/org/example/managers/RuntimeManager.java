@@ -1,34 +1,25 @@
 package org.example.managers;
 
+import lombok.AllArgsConstructor;
 import org.example.utils.InputReader;
 import org.example.utils.Printable;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
+@AllArgsConstructor
 public class RuntimeManager implements Runnable {
     private final Printable consoleOutput;
     private final InputReader consoleInput;
     private final CommandManager commandManager;
     private final FileManager fileManager;
 
-    /**
-     * Конструктор RuntimeManager
-     * @param consoleOutput поток вывода
-     * @param consoleInput поток ввода
-     */
-    public RuntimeManager(Printable consoleOutput, InputReader consoleInput, CommandManager commandManager, FileManager fileManager) {
-        this.consoleOutput = consoleOutput;
-        this.consoleInput = consoleInput;
-        this.commandManager = commandManager;
-        this.fileManager = fileManager;
-    }
-
     @Override
     public void run() {
         consoleOutput.println(
                 "ghbdtn! Вы используете программу prog_lab5 версии 1.0 в режиме треминала!!! \n" +
                         "Для справки по доступным командам воспользуйтесь командой \"help\"");
+        consoleOutput.println("(*) Взаимодействие с файлом: " + fileManager.getFile().getName());
         while (true) {
             try {
                 consoleOutput.print("$ ");
@@ -44,7 +35,6 @@ public class RuntimeManager implements Runnable {
                 consoleOutput.printError("Ошибка во время выполнения: " + e.getMessage());
                 break;
             }
-
         }
     }
 
@@ -58,6 +48,7 @@ public class RuntimeManager implements Runnable {
         }
         try {
             commandManager.getCommands().get(qCommandName).execute(qCommandArgs);
+            commandManager.addToHistory(commandManager.getCommands().get(qCommandName));
         } catch (Exception e) {
             consoleOutput.printError("Произошла ошибка во время выполнения команды \"" + qCommandName + "\": " + e.getMessage());
         }

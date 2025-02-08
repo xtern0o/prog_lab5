@@ -91,7 +91,7 @@ public abstract class Builder<T> {
             consoleOutput.print(String.format("%s (%s)\n-> ", valueName, valueInfo));
             try {
                 String input = consoleInput.readLine().trim();
-                if (input.isBlank()) return null;
+                if (input.isBlank()) throw new NumberFormatException();
                 Float value = Float.parseFloat(input);
                 if (validateRule.test(value)) return value;
                 consoleOutput.printError("Введенное значение не удовлетворяет одному или нескольким условиям валидации поля \"" + valueName + "\". " + errorMessage);
@@ -107,7 +107,7 @@ public abstract class Builder<T> {
             consoleOutput.print(String.format("%s (%s)\n-> ", valueName, valueInfo));
             try {
                 String input = consoleInput.readLine().trim();
-                if (input.isBlank()) return null;
+                if (input.isBlank()) throw new NumberFormatException();
                 Double value = Double.parseDouble(input);
                 if (validateRule.test(value)) return value;
                 consoleOutput.printError("Введенное значение не удовлетворяет одному или нескольким условиям валидации поля \"" + valueName + "\". " + errorMessage);
@@ -123,7 +123,7 @@ public abstract class Builder<T> {
             consoleOutput.print(String.format("%s (%s)\n-> ", valueName, valueInfo));
             try {
                 String input = consoleInput.readLine().trim();
-                if (input.isBlank()) return null;
+                if (input.isBlank()) throw new NumberFormatException();
                 Long value = Long.parseLong(input);
                 if (validateRule.test(value)) return value;
                 consoleOutput.printError("Введенное значение не удовлетворяет одному или нескольким условиям валидации поля \"" + valueName + "\". " + errorMessage);

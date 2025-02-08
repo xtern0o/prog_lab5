@@ -60,19 +60,45 @@ public class Ticket implements Validatable, Comparable<Ticket> {
         return person.validate() && coordinates.validate();
     }
 
+//    @Override
+//    public String toString() {
+//        return "Ticket(" +
+//                "id = " + this.id + ", " +
+//                "name = " + this.name + ", " +
+//                "coordinates = " + this.coordinates + ", " +
+//                "creationDate = " + this.creationDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) + ", " +
+//                "price = " + this.price + ", " +
+//                "discount = " + this.discount + ", " +
+//                "refundable = " + this.refundable + ", " +
+//                "type = " + this.type + ", " +
+//                "person = " + this.person + ")";
+//    }
+
     @Override
     public String toString() {
-        return "Ticket {" + "\n" +
-                "id = " + this.id + ",\n" +
-                "name = " + this.name + ",\n" +
-                "coordinates = " + this.coordinates + ",\n" +
-                "creationDate = " + this.creationDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) + ",\n" +
-                "price = " + this.price + ",\n" +
-                "discount = " + this.discount + ",\n" +
-                "refundable = " + this.refundable + ",\n" +
-                "type = " + this.type + ",\n" +
-                "person = " + this.person + "\n" +
-                "}";
+        return String.format(
+                "Ticket:\n" +
+                "-------------+-----------------------------------------------------" + "\n" +
+                "id           | %-50d |\n" +
+                "name         | %-50s |\n" +
+                "coordinates  | %-50s |\n" +
+                "creationDate | %-50s |\n" +
+                "price        | %-50.2f |\n" +
+                "discount     | %-50.2f |\n" +
+                "refundable   | %-50s |\n" +
+                "type         | %-50s |\n" +
+                "person       | %-50s |\n" +
+                "-------------+-----------------------------------------------------",
+                id,
+                name,
+                coordinates,
+                this.creationDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
+                price,
+                discount,
+                refundable ? "Yes" : "No",
+                type != null ? type.name() : "?",
+                person
+        );
     }
 
     @Override

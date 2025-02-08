@@ -32,7 +32,6 @@ public class HistoryCommand extends Command {
             for (int i = 1; i <= history.size(); i++) {
                 consoleOutput.println(i + ". " + history.get(i - 1).getName());
             }
-            commandManager.addToHistory(this);
             return;
         }
         consoleOutput.printError("Эта команда не принимает никаких аргументов.");

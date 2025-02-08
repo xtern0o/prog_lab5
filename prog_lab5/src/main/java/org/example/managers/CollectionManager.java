@@ -29,7 +29,7 @@ public class CollectionManager {
             existIds.add(ticket.getId());
         }
 
-        for (int i = 0; i < Collections.max(existIds); i++) {
+        for (int i = 1; i < Collections.max(existIds); i++) {
             if (!existIds.contains(i)) return i;
         }
         return Collections.max(existIds) + 1;
