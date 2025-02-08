@@ -6,23 +6,20 @@ import org.example.entity.Ticket;
 import org.example.managers.CollectionManager;
 import org.example.utils.Printable;
 
-import java.util.Collection;
 import java.util.PriorityQueue;
 
 public class ShowCommand extends Command {
     private final Printable consoleOutput;
-    private final CollectionManager collectionManager;
 
-    public ShowCommand(Printable consoleOutput, CollectionManager collectionManager) {
+    public ShowCommand(Printable consoleOutput) {
         super("show", "выводит в стандартный поток вывода все элементы коллекции в строковом представлении");
         this.consoleOutput = consoleOutput;
-        this.collectionManager = collectionManager;
     }
 
     @Override
     public void execute(String[] args) {
         // копируем чтобы удалить элементы в порядке приоритета
-        PriorityQueue<Ticket> collection = new PriorityQueue<>(collectionManager.getCollection());
+        PriorityQueue<Ticket> collection = new PriorityQueue<>(CollectionManager.getCollection());
         if (collection.isEmpty()) {
             consoleOutput.println("Коллекция пуста :( Добавьте ченить");
             return;

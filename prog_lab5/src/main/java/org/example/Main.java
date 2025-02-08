@@ -3,10 +3,7 @@ package org.example;
 import org.example.command.Command;
 import org.example.command.ConsoleInput;
 import org.example.command.ConsoleOutput;
-import org.example.command.commands.AddCommand;
-import org.example.command.commands.HelpCommand;
-import org.example.command.commands.HistoryCommand;
-import org.example.command.commands.ShowCommand;
+import org.example.command.commands.*;
 import org.example.managers.CollectionManager;
 import org.example.managers.CommandManager;
 import org.example.managers.FileManager;
@@ -33,7 +30,8 @@ public class Main {
                 new HelpCommand(commandManager, consoleOutput),
                 new HistoryCommand(commandManager, consoleOutput),
                 new AddCommand(consoleOutput, consoleInput, collectionManager),
-                new ShowCommand(consoleOutput, collectionManager)
+                new ShowCommand(consoleOutput),
+                new InfoCommand(consoleOutput, collectionManager)
             )
         );
         commandManager.addCommands(commands);

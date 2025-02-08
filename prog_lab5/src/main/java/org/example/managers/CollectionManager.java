@@ -1,14 +1,17 @@
 package org.example.managers;
 
+import lombok.Getter;
 import org.example.entity.Ticket;
 import org.example.utils.exceptions.ValidationError;
 
 import java.util.*;
 
+@Getter
 public class CollectionManager {
     /**
      * Коллекция билетов
      */
+    @Getter
     private static final PriorityQueue<Ticket> collection = new PriorityQueue<>();
 
     /**
@@ -36,11 +39,19 @@ public class CollectionManager {
     }
 
     /**
-     * Возвращает коллекцию
-     * @return коллекция
+     * Получение типа коллекции
+     * @return класс объекта коллекции
      */
-    public PriorityQueue<Ticket> getCollection() {
-        return collection;
+    public String getTypeOfCollection() {
+        return collection.getClass().getName();
+    }
+
+    /**
+     * Возвращает размер коллекции
+     * @return число элементов в коллекции
+     */
+    public int getCollectionSize() {
+        return collection.size();
     }
 
     /**
