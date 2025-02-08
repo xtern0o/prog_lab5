@@ -3,6 +3,7 @@
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/command/CommandInterface.java
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/command/ConsoleInput.java
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/command/ConsoleOutput.java
+/home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/command/commands/AddCommand.java
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/command/commands/HelpCommand.java
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/command/commands/HistoryCommand.java
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/entity/Coordinates.java
@@ -22,3 +23,4 @@
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/utils/InputReader.java
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/utils/Printable.java
 /home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/utils/Validatable.java
+/home/maxkarn/Desktop/labs/prog/prog_lab5/prog_lab5/src/main/java/org/example/utils/exceptions/ValidationError.java

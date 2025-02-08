@@ -51,13 +51,13 @@ public class Ticket implements Validatable, Comparable<Ticket> {
     @Override
     public boolean validate() {
         if (id == null || id <= 0) return false;
-        // TODO: проверять уникальность id
         if (name == null || name.isEmpty()) return false;
         if (creationDate == null) return false;
         if (price <= 0) return false;
         if (discount == null || discount <= 0 || discount > 100) return false;
         if (person == null) return false;
-        return true;
+
+        return person.validate() && coordinates.validate();
     }
 
     @Override

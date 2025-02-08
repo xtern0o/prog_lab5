@@ -3,6 +3,7 @@ package org.example;
 import org.example.command.Command;
 import org.example.command.ConsoleInput;
 import org.example.command.ConsoleOutput;
+import org.example.command.commands.AddCommand;
 import org.example.command.commands.HelpCommand;
 import org.example.command.commands.HistoryCommand;
 import org.example.managers.CollectionManager;
@@ -12,6 +13,7 @@ import org.example.managers.RuntimeManager;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -32,12 +34,19 @@ public class Main {
         FileManager fileManager = new FileManager(args[0], consoleOutput, collectionManager);
         if (!fileManager.validate()) return;
 
-        commandManager.addCommand(new HelpCommand(commandManager, consoleOutput));
-        commandManager.addCommand(new HistoryCommand(commandManager, consoleOutput));
+        ArrayList<Command> commands = new ArrayList<>(Arrays.asList(
+                new HelpCommand(commandManager, consoleOutput),
+                new HistoryCommand(commandManager, consoleOutput),
+                new AddCommand(consoleOutput, consoleInput, collectionManager)));
+        commandManager.addCommands(commands);
 
 
         RuntimeManager runtimeManager = new RuntimeManager(consoleOutput, consoleInput, commandManager, fileManager);
         runtimeManager.run();
+    }
+
+    public static boolean argsValidator(String[] args) {
+
     }
 }
 

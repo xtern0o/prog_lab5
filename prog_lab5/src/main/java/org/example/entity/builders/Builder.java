@@ -17,7 +17,13 @@ public abstract class Builder<T> {
     protected final Printable consoleOutput;
     protected final ConsoleInput consoleInput;
 
+    /**
+     * Статический массив для хранения слов которые следует распознавать как значение true
+     */
     public static final ArrayList<String> trueWords = new ArrayList<>(Arrays.asList("1", "+", "on", "y", "yes", "t", "true"));
+    /**
+     * Статический массив для хранения слов которые следует распознавать как значение false
+     */
     public static final ArrayList<String> falseWords = new ArrayList<>(Arrays.asList("0", "-", "off", "n", "no", "not", "f", "false"));
 
     public Builder(Printable consoleOutput, ConsoleInput consoleInput) {
@@ -42,7 +48,7 @@ public abstract class Builder<T> {
      */
     public String askString(String valueName, String valueInfo, Predicate<String> validateRule, String errorMessage) {
         while (true) {
-            consoleOutput.print(String.format("-> %s (%s): ", valueName, valueInfo));
+            consoleOutput.print(String.format("%s (%s)\n-> ", valueName, valueInfo));
             String value = consoleInput.readLine().trim();
             if (validateRule.test(value)) return value;
             consoleOutput.printError("Введенное значение не удовлетворяет одному или нескольким условиям валидации поля \"" + valueName + "\". " + errorMessage);
@@ -51,7 +57,7 @@ public abstract class Builder<T> {
 
     public Integer askInteger(String valueName, String valueInfo, Predicate<Integer> validateRule, String errorMessage) {
         while (true) {
-            consoleOutput.print(String.format("-> %s (%s): ", valueName, valueInfo));
+            consoleOutput.print(String.format("%s (%s)\n-> ", valueName, valueInfo));
             try {
                 Integer value = Integer.parseInt(consoleInput.readLine());
                 if (validateRule.test(value)) return value;
@@ -65,7 +71,7 @@ public abstract class Builder<T> {
 
     public <T extends Enum<T>> T askEnum(String valueName, String valueInfo, Class<T> enumClass, Predicate<T> validateRule, String errorMessage) {
         while (true) {
-            consoleOutput.print(String.format("-> %s (%s) [%s]: ", valueName, valueInfo, Arrays.toString(enumClass.getEnumConstants())));
+            consoleOutput.print(String.format("%s (%s)\n%s\n-> ", valueName, valueInfo, Arrays.toString(enumClass.getEnumConstants())));
             try {
                 String input = consoleInput.readLine().trim();
                 if (input.isBlank()) return null;
@@ -82,9 +88,11 @@ public abstract class Builder<T> {
 
     public Float askFloat(String valueName, String valueInfo, Predicate<Float> validateRule, String errorMessage) {
         while (true) {
-            consoleOutput.println(String.format("-> %s (%s): ", valueName, valueInfo));
+            consoleOutput.print(String.format("%s (%s)\n-> ", valueName, valueInfo));
             try {
-                Float value = Float.parseFloat(consoleInput.readLine());
+                String input = consoleInput.readLine().trim();
+                if (input.isBlank()) return null;
+                Float value = Float.parseFloat(input);
                 if (validateRule.test(value)) return value;
                 consoleOutput.printError("Введенное значение не удовлетворяет одному или нескольким условиям валидации поля \"" + valueName + "\". " + errorMessage);
             }
@@ -96,9 +104,11 @@ public abstract class Builder<T> {
 
     public Double askDouble(String valueName, String valueInfo, Predicate<Double> validateRule, String errorMessage) {
         while (true) {
-            consoleOutput.println(String.format("-> %s (%s): ", valueName, valueInfo));
+            consoleOutput.print(String.format("%s (%s)\n-> ", valueName, valueInfo));
             try {
-                Double value = Double.parseDouble(consoleInput.readLine());
+                String input = consoleInput.readLine().trim();
+                if (input.isBlank()) return null;
+                Double value = Double.parseDouble(input);
                 if (validateRule.test(value)) return value;
                 consoleOutput.printError("Введенное значение не удовлетворяет одному или нескольким условиям валидации поля \"" + valueName + "\". " + errorMessage);
             }
@@ -110,9 +120,11 @@ public abstract class Builder<T> {
 
     public Long askLong(String valueName, String valueInfo, Predicate<Long> validateRule, String errorMessage) {
         while (true) {
-            consoleOutput.println(String.format("-> %s (%s): ", valueName, valueInfo));
+            consoleOutput.print(String.format("%s (%s)\n-> ", valueName, valueInfo));
             try {
-                Long value = Long.parseLong(consoleInput.readLine());
+                String input = consoleInput.readLine().trim();
+                if (input.isBlank()) return null;
+                Long value = Long.parseLong(input);
                 if (validateRule.test(value)) return value;
                 consoleOutput.printError("Введенное значение не удовлетворяет одному или нескольким условиям валидации поля \"" + valueName + "\". " + errorMessage);
             }
@@ -124,7 +136,7 @@ public abstract class Builder<T> {
 
     public boolean askBoolean(String valueName) {
         while (true) {
-            consoleOutput.println(String.format("[true=(\"1\", \"+\", \"on\", \"y\", \"yes\", \"t\", \"true\"); false=\"0\", \"-\", \"off\", \"n\", \"no\", \"not\", \"f\", \"false\"]\n-> %s: ", valueName));
+            consoleOutput.print(String.format("%s\nДА=(\"1\", \"+\", \"on\", \"y\", \"yes\", \"t\", \"true\"); \nНЕТ=\"0\", \"-\", \"off\", \"n\", \"no\", \"not\", \"f\", \"false\"\n-> ", valueName));
             String input = consoleInput.readLine().trim().toLowerCase();
             if (Builder.trueWords.contains(input)) {
                 return true;

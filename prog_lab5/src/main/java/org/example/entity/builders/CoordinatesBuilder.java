@@ -18,8 +18,8 @@ public class CoordinatesBuilder extends Builder<Coordinates> {
 
         consoleOutput.println("Создание нового объекта Coordinates");
 
-        Float x = askFloat("x", "дробное число типа Float", validateX, "Неверный формат ввода!!");
-        Integer y = askInteger("y", "целое число; значение не пусто; значение больше -471", validateY, "Неверный формат ввода: число должно удовлетворять требованиям");
+        Float x = askFloat("координата x", "дробное число типа Float", validateX, "Неверный формат ввода!!");
+        Integer y = askInteger("координата y", "целое число; значение не пусто; значение больше -471", validateY, "Неверный формат ввода: число должно удовлетворять требованиям");
 
         return new Coordinates(x, y);
     }

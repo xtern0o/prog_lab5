@@ -16,8 +16,6 @@ public class TicketBuilder extends Builder<Ticket>{
 
     @Override
     public Ticket build() {
-        // TODO: генерация id автоматическая
-        // TODO: creationDate автоматически
         Predicate<String> validateName = (name) -> (name != null && !name.isBlank());
         Predicate<Double> validatePrice = (price) -> (price > 0);
         Predicate<Float> validateDiscount = (discount) -> (discount != null && discount > 0 && discount < 100);

@@ -14,8 +14,7 @@ public class Person implements Validatable{
 
     @Override
     public boolean validate() {
-        if (height <= 0) return false;
-        return true;
+        return height > 0;
     }
 
     @Override

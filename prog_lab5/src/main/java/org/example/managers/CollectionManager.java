@@ -1,6 +1,7 @@
 package org.example.managers;
 
 import org.example.entity.Ticket;
+import org.example.utils.exceptions.ValidationError;
 
 import java.util.*;
 
@@ -15,34 +16,6 @@ public class CollectionManager {
      * Время инициализации объекта CollectionManager
      */
     private final Date initDate = new Date();
-
-    /**
-     * Возвращает коллекцию
-     * @return коллекция
-     */
-    public PriorityQueue<Ticket> getCollection() {
-        return collection;
-    }
-
-    /**
-     * Добавление нового элемента в коллекцию
-     * @param t новый билет
-     */
-    public void addNewElement(Ticket t) {
-        collection.add(t);
-    }
-
-    /**
-     * Находит объект в коллекции по его id
-     * @param id айди.
-     * @return Объект из коллекции или null, если его не существует
-     */
-    public Ticket getElementById(Integer id) {
-        for (Ticket ticket : collection) {
-            if (Objects.equals(ticket.getId(), id)) return ticket;
-        }
-        return null;
-    }
 
     /**
      * Статический метод для генерации нового id
@@ -60,6 +33,39 @@ public class CollectionManager {
             if (!existIds.contains(i)) return i;
         }
         return Collections.max(existIds) + 1;
+    }
+
+    /**
+     * Возвращает коллекцию
+     * @return коллекция
+     */
+    public PriorityQueue<Ticket> getCollection() {
+        return collection;
+    }
+
+    /**
+     * Находит объект в коллекции по его id
+     * @param id айди.
+     * @return Объект из коллекции или null, если его не существует
+     */
+    public Ticket getElementById(Integer id) {
+        for (Ticket ticket : collection) {
+            if (Objects.equals(ticket.getId(), id)) return ticket;
+        }
+        return null;
+    }
+
+    /**
+     * Добавляет элемент в коллекцию предварительно проведя контрольную валидацию
+     * @param ticket новый элемент
+     * @throws ValidationError в случае неудачного прохождения валидации
+     */
+    public void addElement(Ticket ticket) throws ValidationError {
+        if (ticket.validate()) {
+            collection.add(ticket);
+            return;
+        }
+        throw new ValidationError(ticket);
     }
 
 }
