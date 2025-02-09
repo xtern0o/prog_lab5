@@ -1,6 +1,7 @@
 package org.example.managers;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.example.entity.Ticket;
 import org.example.utils.exceptions.ValidationError;
 
@@ -12,7 +13,8 @@ public class CollectionManager {
      * Коллекция билетов
      */
     @Getter
-    private static final PriorityQueue<Ticket> collection = new PriorityQueue<>();
+    @Setter
+    private static PriorityQueue<Ticket> collection = new PriorityQueue<>();
 
     /**
      * Время инициализации коллекции

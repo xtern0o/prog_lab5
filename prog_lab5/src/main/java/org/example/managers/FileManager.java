@@ -8,12 +8,12 @@ import org.example.command.ConsoleOutput;
 import org.example.entity.Ticket;
 import org.example.utils.Validatable;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
+import java.util.PriorityQueue;
 
 /**
  * Менеджер файлов.
@@ -78,7 +78,33 @@ public class FileManager implements Validatable {
     }
 
     public void deserializeCollectionFromJSON() {
-        // TODO: сделать.
+        try (FileInputStream fileInputStream = new FileInputStream(file);
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
+
+            String json = "";
+            String line = bufferedReader.readLine();
+            while (line != null) {
+                json += line;
+                line = bufferedReader.readLine();
+            }
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.registerModule(new JavaTimeModule());
+
+            PriorityQueue<Ticket> jsonCollection = objectMapper.readValue(
+                    json,
+                    objectMapper
+                            .getTypeFactory()
+                            .constructCollectionType(PriorityQueue.class, Ticket.class)
+            );
+
+            CollectionManager.setCollection(jsonCollection);
+
+        } catch (IOException e) {
+            consoleOutput.printError("Ну как вы умудрились получить эту ошибку...? Не надо удалять файл во время работы программы!!!");
+            consoleOutput.printError(e.getMessage());
+        }
     }
 
 }

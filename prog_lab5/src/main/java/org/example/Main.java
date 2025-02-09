@@ -25,6 +25,8 @@ public class Main {
         FileManager fileManager = new FileManager(new File(args[0]), consoleOutput, collectionManager);
         if (!fileManager.validate()) return;
 
+        fileManager.deserializeCollectionFromJSON();
+
         ArrayList<Command> commands = new ArrayList<>(Arrays.asList(
                 new HelpCommand(commandManager, consoleOutput),
                 new HistoryCommand(commandManager, consoleOutput),

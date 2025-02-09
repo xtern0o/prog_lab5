@@ -3,6 +3,9 @@ package org.example.entity;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.managers.CollectionManager;
@@ -36,6 +39,10 @@ public class Ticket implements Validatable, Comparable<Ticket> {
     @Setter
     private Person person; //Поле не может быть null
 
+    public Ticket() {
+
+    }
+
     public Ticket(String name, Coordinates coordinates, double price, Float discount, TicketType type, boolean refundable, Person person) {
         this.name = name;
         this.coordinates = coordinates;
@@ -47,6 +54,23 @@ public class Ticket implements Validatable, Comparable<Ticket> {
 
         this.id = CollectionManager.generateFreeId();
         this.creationDate = ZonedDateTime.now();
+    }
+
+    @JsonCreator
+    Ticket(
+            @JsonProperty("name") String name,
+            @JsonProperty("coordinates") Coordinates coordinates,
+            @JsonProperty("price") double price,
+            @JsonProperty("discount") Float discount,
+            @JsonProperty("type") TicketType type,
+            @JsonProperty("refundable") boolean refundable,
+            @JsonProperty("person") Person person,
+            @JsonProperty("id") Integer id,
+            @JsonProperty("creationDate") ZonedDateTime creationDate
+    ) {
+        this(name, coordinates, price, discount, type, refundable, person);
+        this.id = id;
+        this.creationDate = creationDate;
     }
 
     @Override

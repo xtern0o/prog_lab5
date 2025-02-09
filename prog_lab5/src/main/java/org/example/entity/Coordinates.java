@@ -1,5 +1,7 @@
 package org.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.utils.Validatable;
@@ -10,7 +12,8 @@ public class Coordinates implements Validatable {
     private float x;
     private Integer y; //Значение поля должно быть больше -471, Поле не может быть null
 
-    public Coordinates(float x, Integer y) {
+    @JsonCreator
+    public Coordinates(@JsonProperty("x") float x, @JsonProperty("y") Integer y) {
         this.x = x;
         this.y = y;
     }
