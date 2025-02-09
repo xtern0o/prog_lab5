@@ -17,7 +17,8 @@ public class RemoveByIdCommand extends Command {
     @Override
     public void execute(String[] args) {
         if (args.length != 1) {
-            consoleOutput.printError("Команда принимает только 1 целочисленный аргумент");
+            consoleOutput.printError("Команда принимает 1 целочисленный аргумент");
+            return;
         }
         try {
             int id = Integer.parseInt(args[0]);

@@ -20,6 +20,10 @@ public class InfoCommand extends Command {
 
     @Override
     public void execute(String[] args) {
+        if (args.length > 0) {
+            consoleOutput.printError("Команда не принимает аргументов!!");
+            return;
+        }
         consoleOutput.println("Информация о коллекции:");
         consoleOutput.println(String.format(
                 ": тип                  | %s\n" +

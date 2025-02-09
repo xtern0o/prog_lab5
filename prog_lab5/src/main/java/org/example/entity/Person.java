@@ -3,13 +3,11 @@ package org.example.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.example.utils.Validatable;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@ToString
 public class Person implements Validatable{
     private long height; //Значение поля должно быть больше 0
     private Country nationality; //Поле может быть null
@@ -19,12 +17,9 @@ public class Person implements Validatable{
         return height > 0;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Person {" + "\n" +
-//                "height = " + this.height + ",\n" +
-//                "nationality = " + this.nationality + "\n" +
-//                "}";
-//    }
+    @Override
+    public String toString() {
+        return String.format("Person (height: %s; nationality: %s)", height, nationality != null ? nationality : "?");
+    }
 
 }

@@ -79,17 +79,15 @@ public class Ticket implements Validatable, Comparable<Ticket> {
     public String toString() {
         return String.format(
                 "Ticket:\n" +
-                "-------------+-----------------------------------------------------" + "\n" +
-                "id           | %-50d |\n" +
-                "name         | %-50s |\n" +
-                "coordinates  | %-50s |\n" +
-                "creationDate | %-50s |\n" +
-                "price        | %-50.2f |\n" +
-                "discount     | %-50.2f |\n" +
-                "refundable   | %-50s |\n" +
-                "type         | %-50s |\n" +
-                "person       | %-50s |\n" +
-                "-------------+-----------------------------------------------------",
+                ": id           | %-50d\n" +
+                ": name         | %-50s\n" +
+                ": coordinates  | %-50s\n" +
+                ": creationDate | %-50s\n" +
+                ": price        | %-50.2f\n" +
+                ": discount     | %-50.2f\n" +
+                ": refundable   | %-50s\n" +
+                ": type         | %-50s\n" +
+                ": person       | %-50s\n",
                 id,
                 name,
                 coordinates,

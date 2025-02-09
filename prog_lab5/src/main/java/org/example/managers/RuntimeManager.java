@@ -16,6 +16,11 @@ public class RuntimeManager implements Runnable {
 
     @Override
     public void run() {
+        // hook, срабатывающий при завершении программы
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            consoleOutput.println("Завершение работы программы. До свидания!!");
+        }));
+
         consoleOutput.println(
                 "ghbdtn! Вы используете программу prog_lab5 версии 1.0 в режиме треминала!!! \n" +
                         "Для справки по доступным командам воспользуйтесь командой \"help\"");
@@ -26,12 +31,10 @@ public class RuntimeManager implements Runnable {
                 String query = consoleInput.readLine().trim();
                 String[] queryParts = query.split(" ");
                 launchCommand(queryParts);
-            }
-            catch (NoSuchElementException e) {
-                consoleOutput.println("Конец ввода. До свидания! :)");
+            } catch (NoSuchElementException e) {  // ^D
+                consoleOutput.println("Конец ввода.");
                 break;
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 consoleOutput.printError("Ошибка во время выполнения: " + e.getMessage());
                 break;
             }
@@ -49,6 +52,8 @@ public class RuntimeManager implements Runnable {
         try {
             commandManager.getCommands().get(qCommandName).execute(qCommandArgs);
             commandManager.addToHistory(commandManager.getCommands().get(qCommandName));
+        } catch (NoSuchElementException e) {
+            // Ctrl + D
         } catch (Exception e) {
             consoleOutput.printError("Произошла ошибка во время выполнения команды \"" + qCommandName + "\": " + e.getMessage());
         }

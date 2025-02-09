@@ -17,7 +17,7 @@ public class HeadCommand extends Command {
     @Override
     public void execute(String[] args) {
         if (args.length > 0) {
-            consoleOutput.println("Команда не принимает аргументов!!");
+            consoleOutput.printError("Команда не принимает аргументов!!");
             return;
         }
         if (collectionManager.getCollectionSize() == 0) {

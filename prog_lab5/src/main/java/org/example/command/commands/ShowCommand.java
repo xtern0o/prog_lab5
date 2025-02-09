@@ -18,6 +18,10 @@ public class ShowCommand extends Command {
 
     @Override
     public void execute(String[] args) {
+        if (args.length > 0) {
+            consoleOutput.printError("Команда не принимает аргументов!!");
+            return;
+        }
         // копируем чтобы удалить элементы в порядке приоритета
         PriorityQueue<Ticket> collection = new PriorityQueue<>(CollectionManager.getCollection());
         if (collection.isEmpty()) {
