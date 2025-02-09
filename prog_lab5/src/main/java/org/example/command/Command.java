@@ -22,7 +22,7 @@ public abstract class Command implements CommandInterface {
 
     @Override
     public String toString() {
-        return String.format(": %-15s | %s", name, description);
+        return String.format(": %-25s | %s", name, description);
     }
 
 }

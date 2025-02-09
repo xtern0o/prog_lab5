@@ -20,7 +20,6 @@ public class Main {
     static CommandManager commandManager = new CommandManager();
 
     public static void main(String[] args) {
-
         if (!validateArgs(args)) return;
 
         FileManager fileManager = new FileManager(new File(args[0]), consoleOutput, collectionManager);
@@ -31,7 +30,14 @@ public class Main {
                 new HistoryCommand(commandManager, consoleOutput),
                 new AddCommand(consoleOutput, consoleInput, collectionManager),
                 new ShowCommand(consoleOutput),
-                new InfoCommand(consoleOutput, collectionManager)
+                new InfoCommand(consoleOutput, collectionManager),
+                new ClearCommand(consoleOutput, collectionManager),
+                new ExitCommand(consoleOutput),
+                new UpdateCommand(consoleInput, consoleOutput, collectionManager),
+                new RemoveByIdCommand(consoleOutput, collectionManager),
+                new HeadCommand(consoleOutput, collectionManager),
+                new RemoveHeadCommand(consoleOutput, collectionManager),
+                new FilterStartsWithNameCommand(consoleOutput, collectionManager)
             )
         );
         commandManager.addCommands(commands);

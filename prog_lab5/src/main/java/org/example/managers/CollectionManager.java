@@ -79,4 +79,26 @@ public class CollectionManager {
         throw new ValidationError(ticket);
     }
 
+    /**
+     * Очищает коллекцию
+     */
+    public void clearCollection() {
+        collection.clear();
+    }
+
+    /**
+     * Удаляет элемент из коллекции по его id
+     * @param id id элемента
+     * @return true если элемент с таким id есть и удален, и false если элемент не найден
+     */
+    public boolean removeById(int id) {
+        for (Ticket ticket : collection) {
+            if (ticket.getId() == id) {
+                collection.remove(ticket);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

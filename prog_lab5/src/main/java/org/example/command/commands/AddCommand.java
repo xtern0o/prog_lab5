@@ -20,6 +20,10 @@ public class AddCommand extends Command {
 
     @Override
     public void execute(String[] args) {
+        if (args.length > 0) {
+            consoleOutput.printError("Команда не принимает аргументов!!");
+            return;
+        }
         consoleOutput.println("Добавление нового объекта в коллекцию. Введите необходимые данные");
         collectionManager.addElement(new TicketBuilder(consoleOutput, consoleInput).build());
         consoleOutput.println("Объект успешно добавлени в коллекцию!");

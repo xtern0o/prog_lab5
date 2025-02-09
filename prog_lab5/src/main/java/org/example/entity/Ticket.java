@@ -10,6 +10,7 @@ import org.example.utils.Validatable;
 
 @Getter
 public class Ticket implements Validatable, Comparable<Ticket> {
+    @Setter
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
 
     @Setter

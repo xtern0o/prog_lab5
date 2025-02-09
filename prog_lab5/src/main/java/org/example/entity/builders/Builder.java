@@ -136,7 +136,7 @@ public abstract class Builder<T> {
 
     public boolean askBoolean(String valueName) {
         while (true) {
-            consoleOutput.print(String.format("%s\nДА=(\"1\", \"+\", \"on\", \"y\", \"yes\", \"t\", \"true\"); \nНЕТ=\"0\", \"-\", \"off\", \"n\", \"no\", \"not\", \"f\", \"false\"\n-> ", valueName));
+            consoleOutput.print(String.format("%s?\nДА=(\"1\", \"+\", \"on\", \"y\", \"yes\", \"t\", \"true\"); \nНЕТ=(\"0\", \"-\", \"off\", \"n\", \"no\", \"not\", \"f\", \"false\")\n-> ", valueName));
             String input = consoleInput.readLine().trim().toLowerCase();
             if (Builder.trueWords.contains(input)) {
                 return true;
