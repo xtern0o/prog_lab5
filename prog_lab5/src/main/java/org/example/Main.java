@@ -39,7 +39,8 @@ public class Main {
                 new RemoveHeadCommand(consoleOutput, collectionManager),
                 new FilterStartsWithNameCommand(consoleOutput, collectionManager),
                 new PrintUniqueDiscountCommand(consoleOutput, collectionManager),
-                new PrintFieldDescendingPersonCommand(consoleOutput)
+                new PrintFieldDescendingPersonCommand(consoleOutput),
+                new SaveCommand(consoleOutput, fileManager)
             )
         );
         commandManager.addCommands(commands);
