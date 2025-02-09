@@ -87,7 +87,7 @@ public class Ticket implements Validatable, Comparable<Ticket> {
                 ": discount     | %-50.2f\n" +
                 ": refundable   | %-50s\n" +
                 ": type         | %-50s\n" +
-                ": person       | %-50s\n",
+                ": person       | %-50s",
                 id,
                 name,
                 coordinates,

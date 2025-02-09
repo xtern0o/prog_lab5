@@ -29,7 +29,7 @@ public class PrintFieldDescendingPersonCommand extends Command {
         consoleOutput.println("Поля person элементов коллекции в порядке убывания приоритета:");
         int i = 1;
         while (!collectionCopy.isEmpty()) {
-            consoleOutput.println(i++ + " " + collectionCopy.poll().getPerson());
+            consoleOutput.println(i++ + ". " + collectionCopy.poll().getPerson());
         }
     }
 }

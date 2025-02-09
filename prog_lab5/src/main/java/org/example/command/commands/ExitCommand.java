@@ -17,7 +17,6 @@ public class ExitCommand extends Command {
             consoleOutput.printError("Команда не принимает аргументов!!");
             return;
         }
-        consoleOutput.println("Выход из системы. До свидания!!!");
         System.exit(0);
     }
 }
