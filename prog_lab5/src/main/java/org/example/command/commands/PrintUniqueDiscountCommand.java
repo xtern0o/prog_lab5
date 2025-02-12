@@ -6,15 +6,12 @@ import org.example.entity.Ticket;
 import org.example.managers.CollectionManager;
 
 import java.util.List;
-import java.util.PriorityQueue;
 
 public class PrintUniqueDiscountCommand extends Command {
     private final ConsoleOutput consoleOutput;
-    private final CollectionManager collectionManager;
 
-    public PrintUniqueDiscountCommand(ConsoleOutput consoleOutput, CollectionManager collectionManager) {
+    public PrintUniqueDiscountCommand(ConsoleOutput consoleOutput) {
         super("print_unique_discount", "вывести элементы, значение поля name которых начинается с заданной подстроки");
-        this.collectionManager = collectionManager;
         this.consoleOutput = consoleOutput;
     }
 

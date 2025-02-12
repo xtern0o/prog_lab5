@@ -85,20 +85,6 @@ public class Ticket implements Validatable, Comparable<Ticket> {
         return person.validate() && coordinates.validate();
     }
 
-//    @Override
-//    public String toString() {
-//        return "Ticket(" +
-//                "id = " + this.id + ", " +
-//                "name = " + this.name + ", " +
-//                "coordinates = " + this.coordinates + ", " +
-//                "creationDate = " + this.creationDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) + ", " +
-//                "price = " + this.price + ", " +
-//                "discount = " + this.discount + ", " +
-//                "refundable = " + this.refundable + ", " +
-//                "type = " + this.type + ", " +
-//                "person = " + this.person + ")";
-//    }
-
     @Override
     public String toString() {
         return String.format(

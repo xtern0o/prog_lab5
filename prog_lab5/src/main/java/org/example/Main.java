@@ -22,7 +22,8 @@ public class Main {
     public static void main(String[] args) {
         if (!validateArgs(args)) return;
 
-        FileManager fileManager = new FileManager(new File(args[0]), consoleOutput, collectionManager);
+        FileManager fileManager = new FileManager(new File(args[0]), consoleOutput);
+
         if (!fileManager.validate()) return;
 
         fileManager.deserializeCollectionFromJSON();
@@ -40,9 +41,10 @@ public class Main {
                 new HeadCommand(consoleOutput, collectionManager),
                 new RemoveHeadCommand(consoleOutput, collectionManager),
                 new FilterStartsWithNameCommand(consoleOutput, collectionManager),
-                new PrintUniqueDiscountCommand(consoleOutput, collectionManager),
+                new PrintUniqueDiscountCommand(consoleOutput),
                 new PrintFieldDescendingPersonCommand(consoleOutput),
-                new SaveCommand(consoleOutput, fileManager)
+                new SaveCommand(consoleOutput, fileManager),
+                new ExecuteScriptCommand(consoleOutput, commandManager)
             )
         );
         commandManager.addCommands(commands);

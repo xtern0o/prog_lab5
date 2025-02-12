@@ -1,6 +1,7 @@
 package org.example.managers;
 
 import lombok.AllArgsConstructor;
+import org.example.command.ConsoleOutput;
 import org.example.utils.InputReader;
 import org.example.utils.Printable;
 
@@ -23,14 +24,14 @@ public class RuntimeManager implements Runnable {
 
         consoleOutput.println(
                 "ghbdtn! Вы используете программу prog_lab5 версии 1.0 в режиме треминала!!! \n" +
-                        "Для справки по доступным командам воспользуйтесь командой \"help\"");
+                        "> \"help\" для справки по доступным командам");
         consoleOutput.println("(*) Взаимодействие с файлом: " + fileManager.getFile().getName());
         while (true) {
             try {
                 consoleOutput.print("$ ");
                 String query = consoleInput.readLine().trim();
                 String[] queryParts = query.split(" ");
-                launchCommand(queryParts);
+                launchCommand(queryParts, commandManager, consoleOutput);
             } catch (NoSuchElementException e) {  // ^D
                 consoleOutput.println("Конец ввода.");
                 break;
@@ -41,7 +42,7 @@ public class RuntimeManager implements Runnable {
         }
     }
 
-    public void launchCommand(String[] queryParts) {
+    public static void launchCommand(String[] queryParts, CommandManager commandManager, Printable consoleOutput) {
         String qCommandName = queryParts[0];
         if (qCommandName.isBlank()) return;
         String[] qCommandArgs = Arrays.copyOfRange(queryParts, 1, queryParts.length);

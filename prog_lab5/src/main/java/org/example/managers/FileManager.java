@@ -24,12 +24,10 @@ public class FileManager implements Validatable {
     @Getter
     private final File file;
     private final ConsoleOutput consoleOutput;
-    private final CollectionManager collectionManager;
 
-    public FileManager(File file, ConsoleOutput consoleOutput, CollectionManager collectionManager) {
+    public FileManager(File file, ConsoleOutput consoleOutput) {
         this.file = file;
         this.consoleOutput = consoleOutput;
-        this.collectionManager = collectionManager;
     }
 
     /**
@@ -46,7 +44,7 @@ public class FileManager implements Validatable {
     @Override
     public boolean validate() {
         if (!file.exists()) {
-            consoleOutput.printError("Файла, введенного в качестве аргумента выполнения программы не сузествует. До свидания! :)");
+            consoleOutput.printError("Файла, введенного в качестве аргумента выполнения программы не существует. До свидания! :)");
             return false;
         }
         if (!file.canRead() || !file.canWrite()) {
@@ -77,6 +75,10 @@ public class FileManager implements Validatable {
         }
     }
 
+    /**
+     * десериализация коллекции из json с помощью InputStreamReader
+     * коллекция сохраняется в статической переменной CollectionManager.collection
+     */
     public void deserializeCollectionFromJSON() {
         try (FileInputStream fileInputStream = new FileInputStream(file);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);
