@@ -52,7 +52,7 @@ public class FileManager implements Validatable {
             return false;
         }
         if (!Objects.equals(getFileFormat(file), "json")) {
-            consoleOutput.printError("Программа работает только с файлами json. Выберите корректный файл");
+            consoleOutput.printError("Программа работает только с файлами json. Выберите корректный файл \nКорректный запуск программы: java -jar prog_lab5-1.0-jar-with-dependencies.jar <файл с данными>.json");
             return false;
         }
         return true;

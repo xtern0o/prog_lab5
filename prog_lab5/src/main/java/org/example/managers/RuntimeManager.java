@@ -23,7 +23,7 @@ public class RuntimeManager implements Runnable {
         }));
 
         consoleOutput.println(
-                "ghbdtn! Вы используете программу prog_lab5 версии 1.0 в режиме треминала!!! \n" +
+                "ghbdtn! Вы используете программу prog_lab5 версии 1.0!! \n" +
                         "> \"help\" для справки по доступным командам");
         consoleOutput.println("(*) Взаимодействие с файлом: " + fileManager.getFile().getName());
         while (true) {
