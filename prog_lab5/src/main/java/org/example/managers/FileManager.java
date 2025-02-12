@@ -101,11 +101,14 @@ public class FileManager implements Validatable {
                             .constructCollectionType(PriorityQueue.class, Ticket.class)
             );
 
-            CollectionManager.setCollection(jsonCollection);
+            if (!CollectionManager.setCollection(jsonCollection)) {
+                throw new IOException("Одно или несколько полей не прошли валидацию");
+            }
 
         } catch (IOException e) {
-            consoleOutput.printError("Ну как вы умудрились получить эту ошибку...? Не надо удалять файл во время работы программы!!!");
+            consoleOutput.printError("Проверьте корректность .json файла!!! Подробности ниже");
             consoleOutput.printError(e.getMessage());
+            System.exit(-1);
         }
     }
 

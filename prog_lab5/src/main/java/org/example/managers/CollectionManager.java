@@ -13,7 +13,6 @@ public class CollectionManager {
      * Коллекция билетов
      */
     @Getter
-    @Setter
     private static PriorityQueue<Ticket> collection = new PriorityQueue<>();
 
     /**
@@ -21,6 +20,16 @@ public class CollectionManager {
      * Время инициализации объекта CollectionManager
      */
     private final Date initDate = new Date();
+
+    public static boolean setCollection(PriorityQueue<Ticket> collection) {
+        for (Ticket t : collection) {
+            if (!t.validate()) {
+                return false;
+            }
+        }
+        CollectionManager.collection = collection;
+        return true;
+    }
 
     /**
      * Статический метод для генерации нового id
