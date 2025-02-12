@@ -33,10 +33,9 @@ public class UpdateCommand extends Command {
                 consoleOutput.println("Элемент с id=" + id + " был успешно изменен!!");
                 return;
             }
-            consoleOutput.printError("Элемента с таким id не существует");
+            consoleOutput.printError("Элемента с id=" + id + " не существует");
         } catch (NumberFormatException e) {
             consoleOutput.printError("Команда принимает только 1 целочисленный аргумент");
         }
-
     }
 }

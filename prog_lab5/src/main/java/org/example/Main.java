@@ -1,8 +1,6 @@
 package org.example;
 
-import org.example.command.Command;
-import org.example.command.ConsoleInput;
-import org.example.command.ConsoleOutput;
+import org.example.command.*;
 import org.example.command.commands.*;
 import org.example.managers.CollectionManager;
 import org.example.managers.CommandManager;

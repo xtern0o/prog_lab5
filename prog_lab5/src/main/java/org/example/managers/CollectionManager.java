@@ -1,7 +1,6 @@
 package org.example.managers;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.example.entity.Ticket;
 import org.example.utils.exceptions.ValidationError;
 
@@ -21,6 +20,11 @@ public class CollectionManager {
      */
     private final Date initDate = new Date();
 
+    /**
+     * Метод присваивает коллекции передаваемое значение, если элементы коллекции корректны
+     * @param collection новая коллекция
+     * @return true если успешно, false если не прошла валидация одного из элементов
+     */
     public static boolean setCollection(PriorityQueue<Ticket> collection) {
         for (Ticket t : collection) {
             if (!t.validate()) {
