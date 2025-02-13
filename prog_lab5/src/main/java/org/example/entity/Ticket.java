@@ -92,15 +92,15 @@ public class Ticket implements Validatable, Comparable<Ticket> {
     public String toString() {
         return String.format(
                 "Ticket:\n" +
-                ": id           | %-50d\n" +
-                ": name         | %-50s\n" +
-                ": coordinates  | %-50s\n" +
-                ": creationDate | %-50s\n" +
-                ": price        | %-50.2f\n" +
-                ": discount     | %-50.2f\n" +
-                ": refundable   | %-50s\n" +
-                ": type         | %-50s\n" +
-                ": person       | %-50s",
+                ": id           | %d\n" +
+                ": name         | %s\n" +
+                ": coordinates  | %s\n" +
+                ": creationDate | %s\n" +
+                ": price        | %.2f\n" +
+                ": discount     | %.2f\n" +
+                ": refundable   | %s\n" +
+                ": type         | %s\n" +
+                ": person       | %s",
                 id,
                 name,
                 coordinates,
@@ -116,6 +116,6 @@ public class Ticket implements Validatable, Comparable<Ticket> {
     @Override
     public int compareTo(Ticket ticket) {
         // TODO: сделать нормальный compareTo
-        return Integer.compare(this.id, ticket.id);
+        return this.creationDate.compareTo(ticket.creationDate);
     }
 }

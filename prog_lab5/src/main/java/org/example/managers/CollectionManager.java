@@ -29,6 +29,10 @@ public class CollectionManager {
      * @return true если успешно, false если не прошла валидация одного из элементов
      */
     public static boolean setCollection(PriorityQueue<Ticket> collection) {
+        if (!CollectionManager.allIdsAreUnique(collection)) {
+            return false;
+        }
+
         for (Ticket t : collection) {
             if (!t.validate()) {
                 return false;
@@ -119,4 +123,12 @@ public class CollectionManager {
         return false;
     }
 
+    public static boolean allIdsAreUnique(Collection<Ticket> collection) {
+        HashSet<Integer> ids = new HashSet<>();
+        for (Ticket t : collection) {
+            if (ids.contains(t.getId())) return false;
+            ids.add(t.getId());
+        }
+        return true;
+    }
 }
