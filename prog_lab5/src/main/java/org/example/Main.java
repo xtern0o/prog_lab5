@@ -53,7 +53,7 @@ public class Main {
 
     public static boolean validateArgs(String[] args) {
         if (args.length == 0) {
-            consoleOutput.printError("Вы не ввели путь файла. До свидания! :)");
+            consoleOutput.printError("Вы не ввели путь файла.\nКорректный запуск программы: java -jar prog_lab5-1.0-jar-with-dependencies.jar <файл с данными>.json\nДо свидания! :)");
             return false;
         }
         else if (args.length > 1) {
