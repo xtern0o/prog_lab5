@@ -7,6 +7,9 @@ import org.example.entity.Ticket;
 import org.example.entity.builders.TicketBuilder;
 import org.example.managers.CollectionManager;
 
+/**
+ * Класс команды update
+ */
 public class UpdateCommand extends Command {
     private final ConsoleOutput consoleOutput;
     private final ConsoleInput consoleInput;

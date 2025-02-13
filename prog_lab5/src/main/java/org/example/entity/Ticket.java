@@ -5,12 +5,15 @@ import java.time.format.DateTimeFormatter;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.managers.CollectionManager;
 import org.example.utils.Validatable;
 
+/**
+ * Модель Ticket
+ * @author maxkarn
+ */
 @Getter
 public class Ticket implements Validatable, Comparable<Ticket> {
     @Setter

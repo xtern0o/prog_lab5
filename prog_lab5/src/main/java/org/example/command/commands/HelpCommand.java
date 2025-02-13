@@ -4,7 +4,9 @@ import org.example.command.Command;
 import org.example.command.ConsoleOutput;
 import org.example.managers.CommandManager;
 
-
+/**
+ * Класс команды help
+ */
 public class HelpCommand extends Command {
     private CommandManager commandManager;
     private ConsoleOutput consoleOutput;

@@ -3,7 +3,15 @@ package org.example.managers;
 import java.io.File;
 import java.util.HashSet;
 
+/**
+ * Менеджер для контроля корректности выполнения исполняемых скриптов
+ * @author maxkarn
+ */
 public class RunnableScriptsManager {
+    /**
+     * Хранение запущенных на данный моент файлов
+     * (можно было сделать дек или стек, но тут достаточно хэшсета)
+     */
     private static final HashSet<File> launchedFiles = new HashSet<>();
 
     /**

@@ -4,6 +4,9 @@ import org.example.command.Command;
 import org.example.command.ConsoleOutput;
 import org.example.managers.CollectionManager;
 
+/**
+ * Класс команды head
+ */
 public class HeadCommand extends Command {
     private final ConsoleOutput consoleOutput;
     private final CollectionManager collectionManager;

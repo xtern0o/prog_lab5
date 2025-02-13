@@ -10,14 +10,12 @@ import org.example.utils.Validatable;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.PriorityQueue;
 
 /**
- * Менеджер файлов.
- * Служит для управления файлами
+ * Менеджер для управления файлами
  * @author maxkarn
  */
 public class FileManager implements Validatable {

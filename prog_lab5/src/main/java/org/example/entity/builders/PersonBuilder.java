@@ -7,6 +7,9 @@ import org.example.utils.Printable;
 
 import java.util.function.Predicate;
 
+/**
+ * Класс билдера объектов класса Person
+ */
 public class PersonBuilder extends Builder<Person> {
     public PersonBuilder(Printable consoleOutput, ConsoleInput consoleInput) {
         super(consoleOutput, consoleInput);

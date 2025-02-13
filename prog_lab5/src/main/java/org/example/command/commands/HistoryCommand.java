@@ -6,6 +6,9 @@ import org.example.managers.CommandManager;
 
 import java.util.ArrayList;
 
+/**
+ * Класс команды history
+ */
 public class HistoryCommand extends Command {
     private CommandManager commandManager;
     private ConsoleOutput consoleOutput;

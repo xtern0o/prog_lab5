@@ -8,6 +8,9 @@ import org.example.managers.RuntimeManager;
 
 import java.io.*;
 
+/**
+ * Класс команды execute_script
+ */
 public class ExecuteScriptCommand extends Command {
     private final ConsoleOutput consoleOutput;
     private final CommandManager commandManager;

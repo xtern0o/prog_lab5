@@ -7,6 +7,9 @@ import org.example.managers.CollectionManager;
 
 import java.util.List;
 
+/**
+ * Класс команды print_unique_discount_command
+ */
 public class PrintUniqueDiscountCommand extends Command {
     private final ConsoleOutput consoleOutput;
 

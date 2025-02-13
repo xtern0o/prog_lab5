@@ -6,6 +6,9 @@ import org.example.utils.exceptions.ValidationError;
 
 import java.util.*;
 
+/**
+ * Менеджер управления статической коллекцией
+ */
 @Getter
 public class CollectionManager {
     /**

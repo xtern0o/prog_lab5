@@ -4,7 +4,13 @@ import org.example.utils.Printable;
 
 import java.io.PrintStream;
 
+/**
+ * Класс для контроля потока вывода
+ */
 public class ConsoleOutput implements Printable {
+    /**
+     * PrintStream для вывода информации
+     */
     private final PrintStream printStream = System.out;
 
     @Override

@@ -3,6 +3,9 @@ package org.example.command.commands;
 import org.example.command.Command;
 import org.example.command.ConsoleOutput;
 
+/**
+ * Класс команды exit
+ */
 public class ExitCommand extends Command {
     private final ConsoleOutput consoleOutput;
 

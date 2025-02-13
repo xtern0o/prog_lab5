@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
+/**
+ * Класс команды filter_starts_with_name
+ */
 public class FilterStartsWithNameCommand extends Command {
     private final ConsoleOutput consoleOutput;
     private final CollectionManager collectionManager;

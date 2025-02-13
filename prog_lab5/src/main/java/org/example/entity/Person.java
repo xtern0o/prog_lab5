@@ -8,6 +8,10 @@ import lombok.Getter;
 import lombok.Setter;
 import org.example.utils.Validatable;
 
+/**
+ * Модель Person
+ * @author maxkarn
+ */
 @Getter
 @Setter
 public class Person implements Validatable{

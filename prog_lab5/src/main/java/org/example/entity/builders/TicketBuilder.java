@@ -9,6 +9,9 @@ import org.example.utils.Printable;
 
 import java.util.function.Predicate;
 
+/**
+ * Билдер для объектов класса Ticket
+ */
 public class TicketBuilder extends Builder<Ticket>{
     public TicketBuilder(Printable consoleOutput, ConsoleInput consoleInput) {
         super(consoleOutput, consoleInput);

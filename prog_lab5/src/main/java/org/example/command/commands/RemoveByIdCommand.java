@@ -4,6 +4,9 @@ import org.example.command.Command;
 import org.example.command.ConsoleOutput;
 import org.example.managers.CollectionManager;
 
+/**
+ * Класс команды remove_by_id
+ */
 public class RemoveByIdCommand extends Command {
     private final ConsoleOutput consoleOutput;
     private final CollectionManager collectionManager;

@@ -6,6 +6,9 @@ import org.example.command.ConsoleOutput;
 import org.example.entity.builders.TicketBuilder;
 import org.example.managers.CollectionManager;
 
+/**
+ * Класс команды add
+ */
 public class AddCommand extends Command {
     private ConsoleOutput consoleOutput;
     private ConsoleInput consoleInput;

@@ -6,6 +6,9 @@ import org.example.managers.CollectionManager;
 
 import java.text.SimpleDateFormat;
 
+/**
+ * Класс команды info
+ */
 public class InfoCommand extends Command {
     private final ConsoleOutput consoleOutput;
     private final CollectionManager collectionManager;

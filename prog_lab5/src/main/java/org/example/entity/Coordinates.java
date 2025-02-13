@@ -6,6 +6,10 @@ import lombok.Getter;
 import lombok.Setter;
 import org.example.utils.Validatable;
 
+/**
+ * Модель координат
+ * @author maxkarn
+ */
 @Getter
 @Setter
 public class Coordinates implements Validatable {

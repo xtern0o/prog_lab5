@@ -6,6 +6,9 @@ import org.example.utils.Printable;
 
 import java.util.function.Predicate;
 
+/**
+ * Класс билдера для объектов класса Coordinates
+ */
 public class CoordinatesBuilder extends Builder<Coordinates> {
     public CoordinatesBuilder(Printable consoleOutput, ConsoleInput consoleInput) {
         super(consoleOutput, consoleInput);

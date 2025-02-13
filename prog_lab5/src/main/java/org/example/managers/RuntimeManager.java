@@ -8,6 +8,10 @@ import org.example.utils.Printable;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
+/**
+ * Менеджер для управления программой в интерактивном режиме и запуска команд
+ * @author maxkarn
+ */
 @AllArgsConstructor
 public class RuntimeManager implements Runnable {
     private final Printable consoleOutput;
@@ -15,6 +19,9 @@ public class RuntimeManager implements Runnable {
     private final CommandManager commandManager;
     private final FileManager fileManager;
 
+    /**
+     * Запуск программы в интерактивном режиме
+     */
     @Override
     public void run() {
         // hook, срабатывающий при завершении программы
@@ -42,6 +49,12 @@ public class RuntimeManager implements Runnable {
         }
     }
 
+    /**
+     * Метод, проверяющий корректность команды и запускающий ее
+     * @param queryParts массив содержащий части команды
+     * @param commandManager объект командного менеджера
+     * @param consoleOutput объект класса, реализующего вывод
+     */
     public static void launchCommand(String[] queryParts, CommandManager commandManager, Printable consoleOutput) {
         String qCommandName = queryParts[0];
         if (qCommandName.isBlank()) return;

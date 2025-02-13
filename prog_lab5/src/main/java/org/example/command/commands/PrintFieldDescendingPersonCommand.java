@@ -7,6 +7,9 @@ import org.example.managers.CollectionManager;
 
 import java.util.PriorityQueue;
 
+/**
+ * Класс команлы print_field_descending_person
+ */
 public class PrintFieldDescendingPersonCommand extends Command {
     private final ConsoleOutput consoleOutput;
 

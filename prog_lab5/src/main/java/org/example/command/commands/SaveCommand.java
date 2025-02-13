@@ -7,6 +7,9 @@ import org.example.managers.FileManager;
 
 import java.io.FileNotFoundException;
 
+/**
+ * Класс команды save
+ */
 public class SaveCommand extends Command {
     private final ConsoleOutput consoleOutput;
     private final FileManager fileManager;

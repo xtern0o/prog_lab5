@@ -5,13 +5,12 @@ import org.example.utils.Printable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.function.Predicate;
 
 /**
  * Базовый абстрактный класс Builder
  * Предназначен для создания сложных объектов поэтапно
- * @param <T>
+ * @param <T> Класс объекта, который мы строим
  */
 public abstract class Builder<T> {
     protected final Printable consoleOutput;

@@ -8,6 +8,9 @@ import org.example.utils.Printable;
 
 import java.util.PriorityQueue;
 
+/**
+ * Класс команды show
+ */
 public class ShowCommand extends Command {
     private final Printable consoleOutput;
 
