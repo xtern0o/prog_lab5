@@ -89,6 +89,13 @@ public class FileManager implements Validatable {
                 line = bufferedReader.readLine();
             }
 
+            // Проверяем, пустой ли JSON
+            if (json.isEmpty() || json.equals("{}")) {
+                consoleOutput.printError("Файл JSON пустой. Используется пустая коллекция.");
+                CollectionManager.setCollection(new PriorityQueue<>());
+                return;
+            }
+
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.registerModule(new JavaTimeModule());
 
