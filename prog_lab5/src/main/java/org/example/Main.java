@@ -2,10 +2,7 @@ package org.example;
 
 import org.example.command.*;
 import org.example.command.commands.*;
-import org.example.managers.CollectionManager;
-import org.example.managers.CommandManager;
-import org.example.managers.FileManager;
-import org.example.managers.RuntimeManager;
+import org.example.managers.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -16,6 +13,7 @@ public class Main {
     static ConsoleInput consoleInput = new ConsoleInput();
     static CollectionManager collectionManager = new CollectionManager();
     static CommandManager commandManager = new CommandManager();
+    static RunnableScriptsManager runnableScriptsManager = new RunnableScriptsManager();
 
     public static void main(String[] args) {
         if (!validateArgs(args)) return;
@@ -42,7 +40,7 @@ public class Main {
                 new PrintUniqueDiscountCommand(consoleOutput),
                 new PrintFieldDescendingPersonCommand(consoleOutput),
                 new SaveCommand(consoleOutput, fileManager),
-                new ExecuteScriptCommand(consoleOutput, commandManager)
+                new ExecuteScriptCommand(consoleOutput, commandManager, consoleInput, runnableScriptsManager)
             )
         );
         commandManager.addCommands(commands);

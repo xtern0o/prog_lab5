@@ -2,6 +2,7 @@ package org.example.entity.builders;
 
 import org.example.command.ConsoleInput;
 import org.example.entity.Coordinates;
+import org.example.utils.InputReader;
 import org.example.utils.Printable;
 
 import java.util.function.Predicate;
@@ -10,7 +11,7 @@ import java.util.function.Predicate;
  * Класс билдера для объектов класса Coordinates
  */
 public class CoordinatesBuilder extends Builder<Coordinates> {
-    public CoordinatesBuilder(Printable consoleOutput, ConsoleInput consoleInput) {
+    public CoordinatesBuilder(Printable consoleOutput, InputReader consoleInput) {
         super(consoleOutput, consoleInput);
     }
 

@@ -3,6 +3,7 @@ package org.example.entity.builders;
 import org.example.command.ConsoleInput;
 import org.example.entity.Country;
 import org.example.entity.Person;
+import org.example.utils.InputReader;
 import org.example.utils.Printable;
 
 import java.util.function.Predicate;
@@ -11,7 +12,7 @@ import java.util.function.Predicate;
  * Класс билдера объектов класса Person
  */
 public class PersonBuilder extends Builder<Person> {
-    public PersonBuilder(Printable consoleOutput, ConsoleInput consoleInput) {
+    public PersonBuilder(Printable consoleOutput, InputReader consoleInput) {
         super(consoleOutput, consoleInput);
     }
 

@@ -1,8 +1,10 @@
 package org.example.command.commands;
 
 import org.example.command.Command;
+import org.example.command.ConsoleInput;
 import org.example.command.ConsoleOutput;
 import org.example.managers.CommandManager;
+import org.example.managers.InputManager;
 import org.example.managers.RunnableScriptsManager;
 import org.example.managers.RuntimeManager;
 
@@ -14,11 +16,15 @@ import java.io.*;
 public class ExecuteScriptCommand extends Command {
     private final ConsoleOutput consoleOutput;
     private final CommandManager commandManager;
+    private final ConsoleInput consoleInput;
+    private final RunnableScriptsManager runnableScriptsManager;
 
-    public ExecuteScriptCommand(ConsoleOutput consoleOutput, CommandManager commandManager) {
+    public ExecuteScriptCommand(ConsoleOutput consoleOutput, CommandManager commandManager, ConsoleInput consoleInput, RunnableScriptsManager runnableScriptsManager) {
         super("execute_script", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
         this.consoleOutput = consoleOutput;
         this.commandManager = commandManager;
+        this.consoleInput = consoleInput;
+        this.runnableScriptsManager = runnableScriptsManager;
     }
 
     @Override
@@ -40,26 +46,22 @@ public class ExecuteScriptCommand extends Command {
                 return;
             }
 
+
+            ConsoleInput.setFileMode(true);
             RunnableScriptsManager.addFile(scriptFile);
 
-            FileInputStream fileInputStream = new FileInputStream(scriptFile);
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-            String line = bufferedReader.readLine();
-            while (line != null) {
+            for (String line = runnableScriptsManager.readLine(); line != null; line = runnableScriptsManager.readLine()) {
                 RuntimeManager.launchCommand(line.split(" "), commandManager, consoleOutput);
-                line = bufferedReader.readLine();
             }
 
             consoleOutput.println("(*) Завершение исполнения файла " + scriptFile.getName());
 
             RunnableScriptsManager.removeFile(scriptFile);
 
+            ConsoleInput.setFileMode(false);
+
         } catch (FileNotFoundException e) {
             consoleOutput.printError("Файл с программой \"" + args[0] + "\" не найден");
-        } catch (IOException e) {
-            consoleOutput.printError("Ошибка чтения файла " + args[0]);
         }
     }
 }

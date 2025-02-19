@@ -1,6 +1,8 @@
 package org.example.entity.builders;
 
 import org.example.command.ConsoleInput;
+import org.example.managers.RunnableScriptsManager;
+import org.example.utils.InputReader;
 import org.example.utils.Printable;
 
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ import java.util.function.Predicate;
  */
 public abstract class Builder<T> {
     protected final Printable consoleOutput;
-    protected final ConsoleInput consoleInput;
+    protected final InputReader consoleInput;
 
     /**
      * Статический массив для хранения слов которые следует распознавать как значение true
@@ -25,9 +27,9 @@ public abstract class Builder<T> {
      */
     public static final ArrayList<String> falseWords = new ArrayList<>(Arrays.asList("0", "-", "off", "n", "no", "not", "f", "false"));
 
-    public Builder(Printable consoleOutput, ConsoleInput consoleInput) {
+    public Builder(Printable consoleOutput, InputReader consoleInput) {
         this.consoleOutput = consoleOutput;
-        this.consoleInput = consoleInput;
+        this.consoleInput = ConsoleInput.isFileMode() ? new RunnableScriptsManager() : consoleInput;
     }
 
     /**
