@@ -1,0 +1,8 @@
+org.example
+org.example.command
+org.example.command.commands
+org.example.entity
+org.example.entity.builders
+org.example.managers
+org.example.utils
+org.example.utils.exceptions

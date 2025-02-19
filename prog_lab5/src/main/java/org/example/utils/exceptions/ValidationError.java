@@ -5,6 +5,9 @@ package org.example.utils.exceptions;
  * @author maxkarn
  */
 public class ValidationError extends RuntimeException {
+    /**
+     * Объект виновник ошибки
+     */
     public Object o;
 
     public ValidationError(Object o) {
