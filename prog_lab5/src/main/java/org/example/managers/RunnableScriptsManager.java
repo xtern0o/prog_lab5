@@ -5,7 +5,6 @@ import org.example.utils.InputReader;
 
 import java.io.*;
 import java.util.ArrayDeque;
-import java.util.HashSet;
 
 /**
  * Менеджер для контроля корректности выполнения исполняемых скриптов

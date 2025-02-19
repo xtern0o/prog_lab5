@@ -50,9 +50,11 @@ public abstract class Builder<T> {
     public String askString(String valueName, String valueInfo, Predicate<String> validateRule, String errorMessage) {
         while (true) {
             consoleOutput.print(String.format("%s (%s)\n> ", valueName, valueInfo));
-            String value = consoleInput.readLine().trim();
+            String value = consoleInput.readLine();
+            if (value != null) value = value.trim();
             if (validateRule.test(value)) return value;
             consoleOutput.printError("Введенное значение не удовлетворяет одному или нескольким условиям валидации поля \"" + valueName + "\". " + errorMessage);
+            dropIfFileMode();
         }
     }
 
@@ -66,6 +68,7 @@ public abstract class Builder<T> {
             }
             catch (NumberFormatException e) {
                 consoleOutput.printError("Что непонятного?! Введите число!!");
+                dropIfFileMode();
             }
         }
     }
@@ -83,6 +86,7 @@ public abstract class Builder<T> {
             }
             catch (IllegalArgumentException e) {
                 consoleOutput.printError("Что непонятного?! Выберите корректное значение из доступных!!");
+                dropIfFileMode();
             }
         }
     }
@@ -91,14 +95,17 @@ public abstract class Builder<T> {
         while (true) {
             consoleOutput.print(String.format("%s (%s)\n> ", valueName, valueInfo));
             try {
-                String input = consoleInput.readLine().trim();
+                String input = consoleInput.readLine();
+                if (input != null) input = input.trim();
                 if (input.isBlank()) throw new NumberFormatException();
                 Float value = Float.parseFloat(input);
                 if (validateRule.test(value)) return value;
                 consoleOutput.printError("Введенное значение не удовлетворяет одному или нескольким условиям валидации поля \"" + valueName + "\". " + errorMessage);
+                dropIfFileMode();
             }
             catch (NumberFormatException e) {
                 consoleOutput.printError("Что непонятного?! Введите корректное дробное число Float!!");
+                dropIfFileMode();
             }
         }
     }
@@ -107,7 +114,8 @@ public abstract class Builder<T> {
         while (true) {
             consoleOutput.print(String.format("%s (%s)\n> ", valueName, valueInfo));
             try {
-                String input = consoleInput.readLine().trim();
+                String input = consoleInput.readLine();
+                if (input != null) input = input.trim();
                 if (input.isBlank()) throw new NumberFormatException();
                 Double value = Double.parseDouble(input);
                 if (validateRule.test(value)) return value;
@@ -115,6 +123,7 @@ public abstract class Builder<T> {
             }
             catch (NumberFormatException e) {
                 consoleOutput.printError("Что непонятного?! Введите корректное дробное число Double!!");
+                dropIfFileMode();
             }
         }
     }
@@ -123,7 +132,8 @@ public abstract class Builder<T> {
         while (true) {
             consoleOutput.print(String.format("%s (%s)\n> ", valueName, valueInfo));
             try {
-                String input = consoleInput.readLine().trim();
+                String input = consoleInput.readLine();
+                if (input != null) input = input.trim();
                 if (input.isBlank()) throw new NumberFormatException();
                 Long value = Long.parseLong(input);
                 if (validateRule.test(value)) return value;
@@ -131,6 +141,7 @@ public abstract class Builder<T> {
             }
             catch (NumberFormatException e) {
                 consoleOutput.printError("Что непонятного?! Введите корректное целое число типа Long!!");
+                dropIfFileMode();
             }
         }
     }
@@ -138,7 +149,8 @@ public abstract class Builder<T> {
     public boolean askBoolean(String valueName) {
         while (true) {
             consoleOutput.print(String.format("%s?\nДА=(\"1\", \"+\", \"on\", \"y\", \"yes\", \"t\", \"true\"); \nНЕТ=(\"0\", \"-\", \"off\", \"n\", \"no\", \"not\", \"f\", \"false\")\n> ", valueName));
-            String input = consoleInput.readLine().trim().toLowerCase();
+            String input = consoleInput.readLine();
+            if (input != null) input = input.trim().toLowerCase();
             if (Builder.trueWords.contains(input)) {
                 return true;
             }
@@ -146,6 +158,14 @@ public abstract class Builder<T> {
                 return false;
             }
             consoleOutput.printError("Что непонятного?! Скажите ДА или НЕТ одним из разрешенных способов!");
+            dropIfFileMode();
+        }
+    }
+
+    private void dropIfFileMode() {
+        if (ConsoleInput.isFileMode()) {
+            consoleOutput.printError("Неверный ввод. Завершение программы");
+            System.exit(-1);
         }
     }
 
